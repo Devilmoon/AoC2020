@@ -50,3 +50,36 @@ with open('input.txt') as f:
                 #convert binary address to decimal, save input data
                 mem[int('0b'+''.join([i for i in a]), 2)] = int(data[1])
 print(sum(mem.values()))
+
+# Alternative solution to Part 2
+# Recursive generator which replaces one X at a time
+# generating all possible addresses given a mask with Xs in it
+# idea stolen from a comment online :) works wonderfully
+def get_addresses(m):
+    if 'X' in m:
+        for r in ('0', '1'):
+            yield from get_addresses(m.replace('X', r, 1))
+    else:
+        yield m
+
+mem = {}
+mask = ''
+with open('input.txt') as f:
+    for line in f:
+        data = line.strip().split(' = ')
+        if data[0] == 'mask':
+            mask = data[1]
+        else:
+            #Convert memory address mem[xxx] in 36 bit binary address 
+            value = list(format(int(data[0].split('[')[1][:-1]), '036b'))
+            #mask rules
+            for i, char in enumerate(mask):
+                if char == '1': value[i] = '1'
+                elif char == 'X': value[i] = 'X'
+            for a in get_addresses(''.join([c for c in value])):
+                #convert binary address to decimal, save input data
+                mem[int('0b'+''.join([i for i in a]), 2)] = int(data[1])
+print(sum(mem.values()))
+
+for a in get_addresses('XXXX'):
+    print(a)
