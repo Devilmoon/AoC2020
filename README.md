@@ -15,3 +15,5 @@ Day 12: Might be reusable when dealing with a compass/cardinal directions
 Day 13: Part 2 uses a clever solution (based on Chinese Remainder Theorem?)
 
 Day 14: Alternative solution for part 2 is very clever, uses a generator to yield all possible combinations, might be reusable in other problems
+
+Day 18: Shunting-yard algorithm and computation of reverse polish notation. Reusable with different operator precedence settings.
