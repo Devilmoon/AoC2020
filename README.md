@@ -19,3 +19,5 @@ Day 14: Alternative solution for part 2 is very clever, uses a generator to yiel
 Day 17: 3D and 4D Conway's Game of Life. Could be used as the basis for a visualization.
 
 Day 18: Shunting-yard algorithm and computation of reverse polish notation. Reusable with different operator precedence settings.
+
+Day 23: Circular (singly) linked list with hashmap for O(1) lookup on elements. Can be extend for other needs.
